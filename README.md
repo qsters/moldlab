@@ -1,6 +1,6 @@
 ![Moldlab Banner Image](./gitassets/banner.png)
 
-MoldLab is a GPU-driven real-time simulation capable of supporting 1M agents simultaneously at 60fps or more, using compute shaders and a trail diffusion model.
+MoldLab is a GPU-driven real-time simulation capable of supporting 1M agents simultaneously at 60fps or more, using **compute shaders** and a trail diffusion model.
 
 The project was developed solo and shipped on **Steam** and **iOS**, focusing on performance, scalability, and interactive parameter exploration.
 
@@ -10,6 +10,13 @@ Inspired and expanded from Sebastian Lague’s video: [Coding Adventure: Ant and
 ### Check it out in these places!
 - **[Steam Store](https://store.steampowered.com/app/2454710/MoldLab/)**
 - **[iOS Store](https://apps.apple.com/us/app/moldlab/id6449797910)**
+
+## Technical Highlights (What I Solved)
+- **GPU compute pipeline:** moved the hot loop (agent updates + trail writes) onto the GPU to avoid CPU bottlenecks.
+- **Minimized GPU ⇄ CPU synchronization:** reduced stalls by limiting readbacks and keeping simulation state on the GPU whenever possible.
+- **Stable performance at scale:** spent significant time profiling/optimizing dispatch sizes, buffer usage, and per-frame work to keep frame times consistent.
+- **Intuitive controls for complex behavior:** dialed in parameter ranges and UI interactions so small changes feel predictable while still allowing dramatic emergent patterns. Creating a spore representation that any could understand.
+- **Shippable cross-platform Unity project:** integrated platform features (Steamworks, iOS, Ads) while keeping the core simulation portable.
 
 ## Quick Facts
 - **Shipped to**: Steam + iOS
